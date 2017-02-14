@@ -155,7 +155,7 @@
 
                 // https://en.wikipedia.org/wiki/Postal_codes_in_Slovenia
                 case 'SI':
-                    isValid = /^[0-9]{4}/i.test(value);
+                    isValid = /^[0-9]{4}$/i.test(value);
                     break;
 
                 case 'SE':

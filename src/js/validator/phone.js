@@ -30,7 +30,7 @@
       },
 
       // The supported countries
-      COUNTRY_CODES: ['BR', 'CN', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'MA', 'PK', 'RO', 'RU', 'SK', 'TH', 'US', 'VE'],
+      COUNTRY_CODES: ['BR', 'CN', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'MA', 'PK', 'RO', 'RU', 'SI', 'SK', 'TH', 'US', 'VE'],
 
       /**
        * Return true if the input value contains a valid phone number for the country
@@ -147,7 +147,7 @@
 
             case 'SI':
                // Test: http://regexr.com/3f9n5
-               isValid = /^(((00)([- ]?)|\+)(386)([- ]?))?((\d{3})([- ]?)){2}(\d{3})$/.test(value);
+               isValid = /^(((00)([- ]?)|\+)(386)([- ]?))?([0]?)(\d{1})([- ]?)(\d{3})(([- ]?)(\d{2})){2}$/.test(value);
                break;
 
             case 'SK':
