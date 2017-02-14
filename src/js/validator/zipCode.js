@@ -21,6 +21,7 @@
             RO: 'Romania',
             RU: 'Russia',
             SE: 'Sweden',
+            SI: 'Slovenian',
             SG: 'Singapore',
             SK: 'Slovakia',
             US: 'USA'
@@ -33,7 +34,7 @@
             country: 'country'
         },
 
-        COUNTRY_CODES: [ 'AT', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'FR', 'GB', 'IE', 'IT', 'MA', 'NL', 'PT', 'RO', 'RU', 'SE', 'SG', 'SK', 'US'],
+        COUNTRY_CODES: [ 'AT', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'FR', 'GB', 'IE', 'IT', 'MA', 'NL', 'PT', 'RO', 'RU', 'SE', 'SI', 'SG', 'SK', 'US'],
 
         /**
          * Return true if and only if the input value is a valid country zip code
@@ -150,6 +151,11 @@
 
                 case 'RU':
                     isValid = /^[0-9]{6}$/i.test(value);
+                    break;
+
+                // https://en.wikipedia.org/wiki/Postal_codes_in_Slovenia
+                case 'SI':
+                    isValid = /^[0-9]{4}/i.test(value);
                     break;
 
                 case 'SE':
