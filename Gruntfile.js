@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
         dirs: {
             src: 'src',
-            dist: 'dist',
+            dist: '../../engine/web/common/static/bootstrapvalidator',
             test: 'test'
         },
 
