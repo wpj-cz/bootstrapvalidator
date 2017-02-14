@@ -58,7 +58,17 @@ module.exports = function(grunt) {
                     stripBanners: true,
                     banner: '<%= banner %>'
                 },
-                src: ['<%= dirs.src %>/js/bootstrapValidator.js', '<%= dirs.src %>/js/validator/*.js'],
+                src: [
+                   '<%= dirs.src %>/js/bootstrapValidator.js',
+                   '<%= dirs.src %>/js/validator/emailAddress.js',
+                   '<%= dirs.src %>/js/validator/identical.js',
+                   '<%= dirs.src %>/js/validator/notEmpty.js',
+                   '<%= dirs.src %>/js/validator/phone.js',
+                   '<%= dirs.src %>/js/validator/regexp.js',
+                   '<%= dirs.src %>/js/validator/stringLength.js',
+                   '<%= dirs.src %>/js/validator/zipCode.js'
+                ],
+
                 dest: '<%= dirs.dist %>/js/bootstrapValidator.js'
             },
             test: {
