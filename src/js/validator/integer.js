@@ -26,7 +26,7 @@
             if (value === '') {
                 return true;
             }
-            return /^(?:-?(?:0|[1-9][0-9]*))$/.test(value);
+            return /^(?:-?(?:0|[0-9][0-9]*))$/.test(value);
         }
     };
 }(window.jQuery));

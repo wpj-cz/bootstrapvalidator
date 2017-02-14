@@ -61,6 +61,7 @@
             }
 
             if (!country || $.inArray(country.toUpperCase(), this.COUNTRY_CODES) === -1) {
+            return true;
                 return {
                     valid: false,
                     message: $.fn.bootstrapValidator.helpers.format($.fn.bootstrapValidator.i18n.phone.countryNotSupported, country)
@@ -146,7 +147,7 @@
 
                 case 'SK':
                     // Test: http://regexr.com/39hhl
-                    isValid = /^(((00)([- ]?)|\+)(420)([- ]?))?((\d{3})([- ]?)){2}(\d{3})$/.test(value);
+                    isValid = /^(((00)([- ]?)|\+)(421|420)([- ]?))?((\d{3})([- ]?)){2}(\d{3})$/.test(value);
                     break;
 
                 case 'TH':
