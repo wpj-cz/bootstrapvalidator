@@ -132,6 +132,8 @@ if (typeof jQuery === 'undefined') {
             // I create a first hidden submit button
             this.$hiddenButton = $('<button/>')
                                     .attr('type', 'submit')
+                                    .attr('name', this.$form.find('[type=submit]').attr('name'))
+                                    .attr('value', this.$form.find('[type=submit]').attr('value'))
                                     .prependTo(this.$form)
                                     .addClass('bv-hidden-submit')
                                     .css({ display: 'none', width: 0, height: 0 });
