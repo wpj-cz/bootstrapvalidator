@@ -121,6 +121,14 @@
                isValid = (/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{5}\)?[\s-]?\d{4,5}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/).test(value);
                break;
 
+            // stejny format jako SI?
+            case 'HR':
+               // https://en.wikipedia.org/wiki/Telephone_numbers_in_Croatia
+               // Test: http://regexr.com/3f9n5
+               // V soucasne dobe nefunguje, pro zprovozneni pridat 'HR' do COUNTRY_CODES
+               isValid = /^(((00)([- ]?)|\+)(385)([- ]?))?([0]?)(\d{1})([- ]?)(\d{3})(([- ]?)(\d{2})){2}$/.test(value);
+               break;
+
             case 'MA':
                // http://en.wikipedia.org/wiki/Telephone_numbers_in_Morocco
                // Test: http://regexr.com/399n8
