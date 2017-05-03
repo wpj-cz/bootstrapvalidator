@@ -159,8 +159,8 @@
                break;
 
             case 'SK':
-               // Test: http://regexr.com/39hhl
-               isValid = /^(((00)([- ]?)|\+)(421|420)([- ]?))?((\d{3})([- ]?)){2}(\d{3})$/.test(value);
+               // Test: http://regexr.com/3fsk4
+               isValid = /^((((00)([- ]?)|\+)(421|420)([- ]?))|(0 ?))?((\d{3})([- ]?)){2}(\d{3})$/.test(value);
                break;
 
             case 'TH':
