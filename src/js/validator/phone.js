@@ -5,6 +5,7 @@
       country: 'Please enter a valid phone number in %s',
       countries: {
          BR: 'Brazil',
+         CH: 'Switzerland',
          CN: 'China',
          CZ: 'Czech Republic',
          DE: 'Germany',
@@ -12,6 +13,7 @@
          ES: 'Spain',
          FR: 'France',
          GB: 'United Kingdom',
+         LI: 'Liechtenstein',
          MA: 'Morocco',
          PK: 'Pakistan',
          RO: 'Romania',
@@ -30,7 +32,7 @@
       },
 
       // The supported countries
-      COUNTRY_CODES: ['BR', 'CN', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'MA', 'PK', 'RO', 'RU', 'SI', 'SK', 'TH', 'US', 'VE'],
+      COUNTRY_CODES: ['BR', 'CH', 'CN', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'LI', 'MA', 'PK', 'RO', 'RU', 'SI', 'SK', 'TH', 'US', 'VE'],
 
       /**
        * Return true if the input value contains a valid phone number for the country
@@ -74,6 +76,11 @@
                // Test: http://regexr.com/399m1
                value   = $.trim(value);
                isValid = (/^(([\d]{4}[-.\s]{1}[\d]{2,3}[-.\s]{1}[\d]{2}[-.\s]{1}[\d]{2})|([\d]{4}[-.\s]{1}[\d]{3}[-.\s]{1}[\d]{4})|((\(?\+?[0-9]{2}\)?\s?)?(\(?\d{2}\)?\s?)?\d{4,5}[-.\s]?\d{4}))$/).test(value);
+               break;
+
+            case 'CH':
+               // Test: http://regexr.com/3g185
+               isValid = /^(((00)([- ]?)|\+)(41)([- ]?))?( *\d *){9}$/.test(value);
                break;
 
             case 'CN':
@@ -127,6 +134,10 @@
                // Test: http://regexr.com/3f9n5
                // V soucasne dobe nefunguje, pro zprovozneni pridat 'HR' do COUNTRY_CODES
                isValid = /^(((00)([- ]?)|\+)(385)([- ]?))?([0]?)(\d{1})([- ]?)(\d{3})(([- ]?)(\d{2})){2}$/.test(value);
+               break;
+
+            case 'LI':
+               isValid = /^(((00)([- ]?)|\+)(423)([- ]?))?( *\d *){7}$/.test(value);
                break;
 
             case 'MA':
