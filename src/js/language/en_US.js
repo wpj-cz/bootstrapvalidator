@@ -282,7 +282,7 @@
         stringLength: {
             'default': 'Please enter a value with valid length',
             less: 'Please enter less than %s characters',
-            more: 'Please enter more than %s characters',
+            more: 'Please enter at least %s characters',
             between: 'Please enter value between %s and %s characters long'
         },
         uri: {
