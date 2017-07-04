@@ -66,6 +66,7 @@ module.exports = function(grunt) {
                    '<%= dirs.src %>/js/validator/phone.js',
                    '<%= dirs.src %>/js/validator/regexp.js',
                    '<%= dirs.src %>/js/validator/stringLength.js',
+                   '<%= dirs.src %>/js/validator/vat.js',
                    '<%= dirs.src %>/js/validator/zipCode.js'
                 ],
 

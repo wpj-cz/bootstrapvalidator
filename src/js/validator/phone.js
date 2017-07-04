@@ -3,6 +3,7 @@
       'default': 'Please enter a valid phone number',
       countryNotSupported: 'The country code %s is not supported',
       country: 'Please enter a valid phone number in %s',
+      phoneValidationWarning: 'Are you sure this is a valid phone number?',
       countries: {
          BR: 'Brazil',
          CH: 'Switzerland',
@@ -60,14 +61,6 @@
          if (typeof country !== 'string' || $.inArray(country, this.COUNTRY_CODES) === -1) {
             // Try to determine the country
             country = validator.getDynamicOption($field, country);
-         }
-
-         if (!country || $.inArray(country.toUpperCase(), this.COUNTRY_CODES) === -1) {
-            return true;
-            return {
-               valid: false,
-               message: $.fn.bootstrapValidator.helpers.format($.fn.bootstrapValidator.i18n.phone.countryNotSupported, country)
-            };
          }
 
          var isValid = true;
@@ -186,8 +179,6 @@
                break;
 
             case 'US':
-            /* falls through */
-            default:
                // Make sure US phone numbers have 10 digits
                // May start with 1, +1, or 1-; should discard
                // Area code may be delimited with (), & sections may be delimited with . or -
@@ -195,12 +186,42 @@
                value   = value.replace(/\D/g, '');
                isValid = (/^(?:(1\-?)|(\+1 ?))?\(?(\d{3})[\)\-\.]?(\d{3})[\-\.]?(\d{4})$/).test(value) && (value.length === 10);
                break;
+
+            /* falls through */
+            default:
+               /* pokud neni v seznamu zemi, kontroluji jen ze je cislo */
+               isValid = (/^\d{3,14}$/).test(value);
+               break;
+         }
+
+
+         // Pokud číslo neni validni podle vybrane zeme:
+         // (1) Vyhodi ' ', '/' a '-' z hodnoty inputu
+         // (2) Zkontroluje jestli to je mezinarodni format zacinajici na 00 nebo +
+         // (3) Pokud je mezinarodni format, vrati, ze je cislo validni, ale zobrazi varovani
+         // (4) Pomocí classy .validation-warning určuji jestli zobrazit validační hlášku u validního fieldu
+         // (5) Podle způsobu validace vracím buď původní zprávu nebo custom hlášku
+
+         var customMessage = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.phone.country, $.fn.bootstrapValidator.i18n.phone.countries[country]);// (5)
+
+         // Varovani
+         if (!isValid) {
+            value = value.replace(/[ /-]/g, ''); // (1)
+            isValid = (/(\+|00)(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$/).test(value); // (2)
+
+            if (isValid) {
+               customMessage =  $.fn.bootstrapValidator.i18n.phone.phoneValidationWarning; // (3)
+               $field.addClass('validation-warning'); // (4)
+            }
+
+         } else {
+            $field.removeClass('validation-warning'); // (4)
          }
 
          return {
             valid: isValid,
-            message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.phone.country, $.fn.bootstrapValidator.i18n.phone.countries[country])
-         };
+            message: customMessage // (5)
+         }
       }
    };
 }(window.jQuery));
