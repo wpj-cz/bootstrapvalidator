@@ -235,7 +235,7 @@
             'default': 'Prosím zadejte správné telefoní číslo',
             countryNotSupported: 'Telefoní číslo pro %s není podporované',
             country: 'Prosím zadejte správné telefoní číslo pro %s',
-            phoneValidationWarning: '',
+            phoneValidationWarning: 'Jste si jistí správností telefonního čísla?',
             countries: {
                 BR: 'Brazílii',
                 CN: 'Čína',

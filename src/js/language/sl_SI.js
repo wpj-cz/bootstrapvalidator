@@ -237,7 +237,7 @@
          'default': 'Napačna telefonska številka',
          countryNotSupported: 'The country code %s is not supported',
          country: 'Please enter a valid phone number in %s',
-         phoneValidationWarning: '',
+         phoneValidationWarning: 'Ste prepričani, da je telefonska številka pravilna?',
          countries: {
             BR: 'Brazil',
             CN: 'China',

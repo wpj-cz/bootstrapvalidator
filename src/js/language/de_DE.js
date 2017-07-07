@@ -235,7 +235,7 @@
             'default': 'Bitte gültige Telefonnummer eingeben',
             countryNotSupported: 'Der Ländercode %s wird nicht unterstützt',
             country: 'Bitte valide Telefonnummer für %s eingeben',
-            phoneValidationWarning: '',
+            phoneValidationWarning: 'Ist die Telefonnummer richtig?',
             countries: {
                 BR: 'Brasilien',
                 CN: 'China',
