@@ -15,6 +15,7 @@
             GB: 'United Kingdom',
             IE: 'Ireland',
             IT: 'Italy',
+            LI: 'Liechtenstein',
             MA: 'Morocco',
             NL: 'Netherlands',
             PT: 'Portugal',
@@ -34,7 +35,7 @@
             country: 'country'
         },
 
-        COUNTRY_CODES: [ 'AT', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'FR', 'GB', 'IE', 'IT', 'MA', 'NL', 'PT', 'RO', 'RU', 'SE', 'SI', 'SG', 'SK', 'US'],
+        COUNTRY_CODES: [ 'AT', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'FR', 'GB', 'IE', 'IT', 'LI', 'MA', 'NL', 'PT', 'RO', 'RU', 'SE', 'SI', 'SG', 'SK', 'US'],
 
         /**
          * Return true if and only if the input value is a valid country zip code
@@ -128,6 +129,12 @@
                 // http://en.wikipedia.org/wiki/List_of_postal_codes_in_Italy
                 case 'IT':
                     isValid = /^(I-|IT-)?\d{5}$/i.test(value);
+                    break;
+
+                // Stejne jako CH
+               // https://en.wikipedia.org/wiki/Postal_codes_in_Switzerland_and_Liechtenstein
+                case 'LI':
+                    isValid = /^([1-9]{1})(\d{3})$/.test(value);
                     break;
 
                 // http://en.wikipedia.org/wiki/List_of_postal_codes_in_Morocco
