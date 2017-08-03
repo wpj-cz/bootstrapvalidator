@@ -33,7 +33,7 @@
       },
 
       // The supported countries
-      COUNTRY_CODES: ['BR', 'CH', 'CN', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'LI', 'MA', 'PK', 'RO', 'RU', 'SI', 'SK', 'TH', 'US', 'VE'],
+      COUNTRY_CODES: ['BR', 'CH', 'CN', 'CZ', 'DE', 'DK', 'ES', 'HR', 'FR', 'GB', 'LI', 'MA', 'PK', 'RO', 'RU', 'SI', 'SK', 'TH', 'US', 'VE'],
 
       /**
        * Return true if the input value contains a valid phone number for the country
@@ -123,10 +123,12 @@
 
             // stejny format jako SI?
             case 'HR':
+               // (1) Vyhodi ' ', '/' a '-' z hodnoty inputu
+               value = value.replace(/[ /-]/g, ''); // (1)
                // https://en.wikipedia.org/wiki/Telephone_numbers_in_Croatia
                // Test: http://regexr.com/3f9n5
                // V soucasne dobe nefunguje, pro zprovozneni pridat 'HR' do COUNTRY_CODES
-               isValid = /^(((00)([- ]?)|\+)(385)([- ]?))?([0]?)(\d{1})([- ]?)(\d{3})(([- ]?)(\d{2})){2}$/.test(value);
+               isValid = /^(((00)([- ]?)|\+)(385)([- ]?))?([0]?)(\d{1})?(\d{8})$/.test(value);
                break;
 
             case 'LI':
