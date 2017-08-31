@@ -62,6 +62,7 @@ module.exports = function(grunt) {
                    '<%= dirs.src %>/js/bootstrapValidator.js',
                    '<%= dirs.src %>/js/validator/emailAddress.js',
                    '<%= dirs.src %>/js/validator/identical.js',
+                   '<%= dirs.src %>/js/validator/integer.js',
                    '<%= dirs.src %>/js/validator/notEmpty.js',
                    '<%= dirs.src %>/js/validator/phone.js',
                    '<%= dirs.src %>/js/validator/regexp.js',
