@@ -132,7 +132,9 @@
                break;
 
             case 'LI':
-               isValid = /^(((00)([- ]?)|\+)(423)([- ]?))?( *\d *){7}$/.test(value);
+               // https://en.wikipedia.org/wiki/Telephone_numbers_in_Liechtenstein
+               // kvuli parfimu vyzadujeme vzdy predvolbu
+               isValid = /^(((00)([- ]?)|\+)(423)([- ]?))( *\d *){7}$/.test(value);
                break;
 
             case 'MA':
