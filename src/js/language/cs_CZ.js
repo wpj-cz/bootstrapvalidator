@@ -294,9 +294,9 @@
             version: 'Prosím zadejte správné UUID verze %s'
         },
         vat: {
-            'default': 'Prosím zadejte správné VAT číslo',
-            countryNotSupported: 'VAT pro %s není podporované',
-            country: 'Prosím zadejte správné VAT číslo pro %s',
+            'default': 'Prosím zadejte platné DIČ',
+            countryNotSupported: 'DIČ pro %s není podporované',
+            country: 'Prosím zadejte DIČ platné pro %s',
             countries: {
                 AT: 'Rakousko',
                 BE: 'Belgii',
@@ -304,7 +304,7 @@
                 BR: 'Brazílii',
                 CH: 'Švýcarsko',
                 CY: 'Kypr',
-                CZ: 'Českou Republiku',
+                CZ: 'ČR',
                 DE: 'Německo',
                 DK: 'Dánsko',
                 EE: 'Estonsko',

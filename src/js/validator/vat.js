@@ -78,12 +78,16 @@
          }
 
          var country = options.country;
+
          if (!country) {
             country = value.substr(0, 2);
          } else if (typeof country !== 'string' || $.inArray(country.toUpperCase(), this.COUNTRY_CODES) === -1) {
             // Determine the country code
             country = validator.getDynamicOption($field, country);
          }
+
+         console.log(country);
+
 
          // Pokud vybraná země není v COUNTRY_CODES, vrací že je validní
          if ($.inArray(country, this.COUNTRY_CODES) === -1) {
@@ -410,6 +414,8 @@
       _cz: function(value) {
          if (/^CZ[0-9]{8,10}$/.test(value)) {
             value = value.substr(2);
+         } else {
+            return false;
          }
          if (!/^[0-9]{8,10}$/.test(value)) {
             return false;
@@ -1347,6 +1353,11 @@
        * @returns {Boolean}
        */
       _sk: function(value) {
+
+         if (!/^SK.*$/.test(value)) {
+            return false;
+         }
+
          if (/^SK[1-9][0-9][(2-4)|(6-9)][0-9]{7}$/.test(value)) {
             value = value.substr(2);
          }
