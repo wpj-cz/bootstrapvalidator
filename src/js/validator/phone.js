@@ -73,8 +73,8 @@
                break;
 
             case 'CH':
-               // Test: http://regexr.com/3g185
-               isValid = /^(((00)([- ]?)|\+)(41)([- ]?))?( *\d *){9}$/.test(value);
+               // Test: http://regexr.com/3h627
+               isValid = /^((((00)|\+)(41)([- ]?))|(0))?( *\d *){9}$/.test(value);
                break;
 
             case 'CN':
