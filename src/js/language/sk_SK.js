@@ -48,7 +48,7 @@
             'default': 'Prosím zadejte správné EAN číslo'
         },
         emailAddress: {
-            'default': 'Prosím zadejte správnou emailovou adresu'
+            'default': 'Prosím zadajte správnu emailovú adresu'
         },
         file: {
             'default': 'Prosím vyberte soubor'
@@ -226,16 +226,15 @@
             'default': 'Prosím zadejte správné MEID číslo'
         },
         notEmpty: {
-            'default': 'Toto pole nesmí být prázdné'
+            'default': 'Toto pole nesmie byť prázdne'
         },
         numeric: {
             'default': 'Prosím zadejte číselnou hodnotu'
         },
         phone: {
-            'default': 'Prosím zadejte správné telefonní číslo',
-            countryNotSupported: 'Telefonní číslo pro %s není podporované',
-            country: 'Prosím zadejte správné telefonní číslo pro %s',
-            phoneValidationWarning: 'Jste si jistí správností telefonního čísla?',
+            'default': 'Prosím zadajte správne telefónne číslo',
+            countryNotSupported: 'Telefoní číslo pro %s není podporované',
+            country: 'Prosím zadejte správné telefoní číslo pro %s',
             countries: {
                 BR: 'Brazílii',
                 CN: 'Čína',
@@ -281,9 +280,9 @@
             upper: 'Pouze velké písmena jsou povoleny v tomto poli'
         },
         stringLength: {
-            'default': 'Toto pole nesmí být prázdné',
+            'default': 'Toto pole nesmie byť prázdne',
             less: 'Prosím zadejte méně než %s znaků',
-            more: 'Prosím zadejte alespoň %s znaků',
+            more: 'Prosím zadejte více než %s znaků',
             between: 'Prosím zadejte mezi %s a %s znaky'
         },
         uri: {
@@ -294,9 +293,9 @@
             version: 'Prosím zadejte správné UUID verze %s'
         },
         vat: {
-            'default': 'Prosím zadejte platné DIČ',
-            countryNotSupported: 'DIČ pro %s není podporované',
-            country: 'Prosím zadejte DIČ platné pro %s',
+            'default': 'Prosím zadejte správné VAT číslo',
+            countryNotSupported: 'VAT pro %s není podporované',
+            country: 'Prosím zadejte správné VAT číslo pro %s',
             countries: {
                 AT: 'Rakousko',
                 BE: 'Belgii',
@@ -304,7 +303,7 @@
                 BR: 'Brazílii',
                 CH: 'Švýcarsko',
                 CY: 'Kypr',
-                CZ: 'ČR',
+                CZ: 'Českou Republiku',
                 DE: 'Německo',
                 DK: 'Dánsko',
                 EE: 'Estonsko',
@@ -341,7 +340,7 @@
             'default': 'Prosím zadejte správné VIN číslo'
         },
         zipCode: {
-            'default': 'Prosím zadejte správné PSČ',
+            'default': 'Prosím zadajte správne PSČ',
             countryNotSupported: '%s není podporované',
             country: 'Prosím zadejte správné PSČ pro %s',
             countries: {

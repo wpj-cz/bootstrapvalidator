@@ -1743,15 +1743,15 @@ if (typeof jQuery === 'undefined') {
         // See https://github.com/nghuuphuoc/bootstrapvalidator/issues/630
         events: {
             formInit: 'init.form.bv',
-            formError: 'error.form.bv',
+            formError: 'validationError.form.bv',
             formSuccess: 'success.form.bv',
             fieldAdded: 'added.field.bv',
             fieldRemoved: 'removed.field.bv',
             fieldInit: 'init.field.bv',
-            fieldError: 'error.field.bv',
+            fieldError: 'validationError.field.bv',
             fieldSuccess: 'success.field.bv',
             fieldStatus: 'status.field.bv',
-            validatorError: 'error.validator.bv',
+            validatorError: 'validationError.validator.bv',
             validatorSuccess: 'success.validator.bv'
         },
 
