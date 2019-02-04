@@ -13,6 +13,7 @@
             DK: 'Denmark',
             FR: 'France',
             GB: 'United Kingdom',
+            HR: 'Croatia',
             IE: 'Ireland',
             IT: 'Italy',
             LI: 'Liechtenstein',
@@ -35,7 +36,7 @@
             country: 'country'
         },
 
-        COUNTRY_CODES: [ 'AT', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'FR', 'GB', 'IE', 'IT', 'LI', 'MA', 'NL', 'PT', 'RO', 'RU', 'SE', 'SI', 'SG', 'SK', 'US'],
+        COUNTRY_CODES: [ 'AT', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'FR', 'GB', 'HR', 'IE', 'IT', 'LI', 'MA', 'NL', 'PT', 'RO', 'RU', 'SE', 'SI', 'SG', 'SK', 'US'],
 
         /**
          * Return true if and only if the input value is a valid country zip code
@@ -118,6 +119,11 @@
 
                 case 'GB':
                     isValid = this._gb(value);
+                    break;
+
+                case 'HR':
+                    // Test: http://regexr.com/39hhr
+                    isValid = /^(\d{5})$/.test(value);
                     break;
 
                 // http://www.eircode.ie/docs/default-source/Common/prepare-your-business-for-eircode---published-v2.pdf?sfvrsn=2
