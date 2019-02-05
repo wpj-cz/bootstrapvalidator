@@ -235,6 +235,7 @@
             'default': 'Veuillez fournir un numéro de téléphone valide',
             countryNotSupported: 'Le code de pays %s n\'est pas accepté',
             country: 'Veuillez fournir un numéro de téléphone valide pour %s',
+            phoneValidationWarning: 'Êtes-vous sûr d\'avoir bien saisi le numéro de téléphone ?',
             countries: {
                 BR: 'Brésil',
                 CN: 'Chine',
