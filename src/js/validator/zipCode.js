@@ -159,7 +159,7 @@
                     break;
 
                 case 'RO':
-                    isValid = /^(0[1-8]{1}|[1-9]{1}[0-5]{1})?[0-9]{4}$/i.test(value);
+                    isValid = /^(0[1-8]{1}|[1-9]{1}[0-5]{1})[0-9]{4}$/i.test(value);
                     break;
 
                 case 'RU':
