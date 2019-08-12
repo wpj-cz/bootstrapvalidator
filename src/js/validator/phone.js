@@ -181,8 +181,8 @@
                break;
 
             case 'SI':
-               // Test: http://regexr.com/3f9n5
-               isValid = /^(((00)([- ]?)|\+)(386)([- ]?))?([0]?)(\d{1})([- ]?)(\d{3})(([- ]?)(\d{2})){2}$/.test(value);
+               // Test: https://regexr.com/4hf89
+               isValid = /^((((00)([- ]?)|\+)(386)([- ]?))|(0))?([1-9])(([- ]?)(\d)){7}$/.test(value);
                break;
 
             case 'SK':
