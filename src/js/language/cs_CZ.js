@@ -48,7 +48,7 @@
             'default': 'Prosím zadejte správné EAN číslo'
         },
         emailAddress: {
-            'default': 'Prosím zadejte správnou emailovou adresu'
+            'default': 'Zadejte platnou e-mailovou adresu'
         },
         file: {
             'default': 'Prosím vyberte soubor'
@@ -232,9 +232,9 @@
             'default': 'Prosím zadejte číselnou hodnotu'
         },
         phone: {
-            'default': 'Prosím zadejte správné telefonní číslo',
+            'default': 'Zadejte platné telefoní číslo',
             countryNotSupported: 'Telefonní číslo pro %s není podporované',
-            country: 'Prosím zadejte správné telefonní číslo pro %s',
+            country: 'Zadejte platné telefoní číslo', // Prosím zadejte správné telefonní číslo pro %s
             phoneValidationWarning: 'Jste si jistí správností telefonního čísla?',
             countries: {
                 BR: 'Brazílii',
@@ -341,9 +341,9 @@
             'default': 'Prosím zadejte správné VIN číslo'
         },
         zipCode: {
-            'default': 'Prosím zadejte správné PSČ',
+            'default': 'Zadejte platné PSČ',
             countryNotSupported: '%s není podporované',
-            country: 'Prosím zadejte správné PSČ pro %s',
+            country: 'Zadejte platné PSČ', // Prosím zadejte správné PSČ pro %s
             countries: {
                 AT: 'Rakousko',
                 BR: 'Brazílie',
