@@ -519,7 +519,17 @@ if (typeof jQuery === 'undefined') {
          * @returns {jQuery}
          */
         _getMessageContainer: function($field, group) {
+            var $originalField;
             var $parent = $field.parent();
+
+            if (!$originalField) {
+                $originalField = $field;
+            }
+
+            if ($parent.length === 0) {
+                return $originalField.parent();
+            }
+
             if ($parent.is(group)) {
                 return $parent;
             }
