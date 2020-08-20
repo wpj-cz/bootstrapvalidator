@@ -219,31 +219,36 @@
 
 
          // Pokud číslo neni validni podle vybrane zeme:
-         // (1) Vyhodi ' ', '/' a '-' z hodnoty inputu
-         // (2) Zkontroluje jestli to je mezinarodni format zacinajici na 00 nebo +
-         // (3) Pokud je mezinarodni format, vrati, ze je cislo validni, ale zobrazi varovani
-         // (4) Pomocí classy .validation-warning určuji jestli zobrazit validační hlášku u validního fieldu
-         // (5) Podle způsobu validace vracím buď původní zprávu nebo custom hlášku
+         // (1) Vyhodi mezery z hodnoty inputu
+         // (2) Pokud to je CZ nebo SK, zkontroluje validitu předčíslí + délku vstupu 6-9 čísel (aby to odpovídalo validaci v engine)
+         // (3) Pokud to není CZ ani SK, zkontroluje validitu předčíslí + délku vstupu 1-14 čísel
+         // (4) Pokud (2) nebo (3) projde, zobrazi se varovani
+         // (5) Pomocí classy .validation-warning určuji jestli zobrazit validační hlášku u validního fieldu
+         // (6) Podle způsobu validace vracím buď původní zprávu nebo custom hlášku
 
-         var customMessage = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.phone.country, $.fn.bootstrapValidator.i18n.phone.countries[country]);// (5)
+         var customMessage = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.phone.country, $.fn.bootstrapValidator.i18n.phone.countries[country]);// (6)
 
          // Varovani
          if (!isValid) {
-            value = value.replace(/[ /-]/g, ''); // (1)
-            isValid = (/(\+|00)(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$/).test(value); // (2)
+            value = value.replace(/\s/g, ''); // (1)
 
-            if (isValid) {
-               customMessage =  $.fn.bootstrapValidator.i18n.phone.phoneValidationWarning; // (3)
-               $field.addClass('validation-warning'); // (4)
+            if (country.toUpperCase() === "CZ" || country.toUpperCase() === "SK")  {
+               isValid = (/(\+|00)(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{6,9}$/).test(value); // (2)
+            } else {
+               isValid = (/(\+|00)(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$/).test(value); // (3)
             }
 
+            if (isValid) {
+               customMessage =  $.fn.bootstrapValidator.i18n.phone.phoneValidationWarning; // (4)
+               $field.addClass('validation-warning'); // (5)
+            }
          } else {
-            $field.removeClass('validation-warning'); // (4)
+            $field.removeClass('validation-warning'); // (5)
          }
 
          return {
             valid: isValid,
-            message: customMessage // (5)
+            message: customMessage // (6)
          }
       }
    };

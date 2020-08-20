@@ -234,7 +234,7 @@
         phone: {
             'default': 'Prosím zadajte správne telefónne číslo',
             countryNotSupported: 'Telefoní číslo pro %s není podporované',
-            country: 'Prosím zadejte správné telefoní číslo pro %s',
+            country: 'Prosím zadejte správné telefoní číslo',
             countries: {
                 BR: 'Brazílii',
                 CN: 'Čína',

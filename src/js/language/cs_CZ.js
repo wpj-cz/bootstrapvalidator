@@ -234,7 +234,7 @@
         phone: {
             'default': 'Zadejte platné telefoní číslo',
             countryNotSupported: 'Telefonní číslo pro %s není podporované',
-            country: 'Zadejte platné telefoní číslo', // Prosím zadejte správné telefonní číslo pro %s
+            country: 'Zadejte platné telefoní číslo',
             phoneValidationWarning: 'Jste si jistí správností telefonního čísla?',
             countries: {
                 BR: 'Brazílii',
@@ -343,7 +343,7 @@
         zipCode: {
             'default': 'Zadejte platné PSČ',
             countryNotSupported: '%s není podporované',
-            country: 'Zadejte platné PSČ', // Prosím zadejte správné PSČ pro %s
+            country: 'Zadejte platné PSČ',
             countries: {
                 AT: 'Rakousko',
                 BR: 'Brazílie',
