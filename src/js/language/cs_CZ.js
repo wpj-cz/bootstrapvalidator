@@ -284,6 +284,7 @@
             'default': 'Toto pole nesmí být prázdné',
             less: 'Prosím zadejte méně než %s znaků',
             more: 'Prosím zadejte alespoň %s znaků',
+            more_than_two: 'Prosím zadejte alespoň %s znaky',
             between: 'Prosím zadejte mezi %s a %s znaky'
         },
         uri: {

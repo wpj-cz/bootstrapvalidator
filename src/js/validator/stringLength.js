@@ -91,7 +91,11 @@
                     break;
 
                 case (!!min):
-                    message = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.stringLength.more, parseInt(min, 10));
+                    if (parseInt(min, 10) > 1 && parseInt(min, 10) < 5 && $.fn.bootstrapValidator.i18n.stringLength.more_than_two) {
+                       message = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.stringLength.more_than_two, parseInt(min, 10));
+                    } else {
+                       message = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.stringLength.more, parseInt(min, 10));
+                    }
                     break;
 
                 case (!!max):
