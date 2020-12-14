@@ -62,7 +62,7 @@
          * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = $field.val().trim();
             if (value === '' || !options.country) {
                 return true;
             }

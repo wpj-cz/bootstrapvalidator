@@ -232,9 +232,9 @@
          default: 'Prosím, zadejte číselnou hodnotu'
       },
       phone: {
-         default: 'Zadejte platné telefoní číslo',
+         default: 'Prosím, zadejte platné telefoní číslo',
          countryNotSupported: 'Telefonní číslo pro %s není podporované',
-         country: 'Zadejte platné telefoní číslo',
+         country: 'Prosím, zadejte platné telefoní číslo',
          phoneValidationWarning: 'Jste si jistí správností telefonního čísla?',
          countries: {
             BR: 'Brazílii',
@@ -342,9 +342,9 @@
          default: 'Prosím, zadejte správné VIN číslo'
       },
       zipCode: {
-         default: 'Zadejte platné PSČ',
+         default: 'Prosím, zadejte platné PSČ',
          countryNotSupported: '%s není podporované',
-         country: 'Zadejte platné PSČ',
+         country: 'Prosím, zadejte platné PSČ',
          countries: {
             AT: 'Rakousko',
             BR: 'Brazílie',
