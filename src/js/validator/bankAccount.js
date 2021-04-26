@@ -16,7 +16,7 @@
       validate: function(validator, $field, options) {
          var value = $field.val();
          var ibanValidator = $.fn.bootstrapValidator.validators.iban;
-         if(ibanValidator.validate(validator, $field, options).valid || this.checkBankAccountNumber(value)) {
+         if(ibanValidator.validate(validator, $field, options).valid || this.checkBankAccountNumber(value) || value === "") {
             return true;
          }
          return false;
