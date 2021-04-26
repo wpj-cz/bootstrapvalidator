@@ -89,7 +89,9 @@ module.exports = function(grunt) {
                '<%= dirs.src %>/js/validator/stringLength.js',
                '<%= dirs.src %>/js/validator/vat.js',
                '<%= dirs.src %>/js/validator/zipCode.js',
-               '<%= dirs.src %>/js/validator/charset.js'
+               '<%= dirs.src %>/js/validator/charset.js',
+               '<%= dirs.src %>/js/validator/iban.js',
+               '<%= dirs.src %>/js/validator/bankAccount.js'
             ],
 
             dest: '<%= dirs.dist %>/js/bootstrapValidator.js'

@@ -4,6 +4,9 @@
     * Translated by @AdwinTrave. Improved by @cuchac
     */
    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+      bankAccount : {
+        default: "Prosím, zadejte správné číslo účtu nebo IBAN"
+      },
       base64: {
          default: 'Prosím, zadejte správný base64'
       },
