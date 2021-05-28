@@ -1,6 +1,6 @@
 (function($) {
    $.fn.bootstrapValidator.i18n.bankAccount = $.extend($.fn.bootstrapValidator.i18n.bankAccount || {}, {
-      'default': 'Please enter right account number or IBAN.'
+      'default': 'Please enter valid IBAN'
    });
 
    $.fn.bootstrapValidator.validators.bankAccount = {

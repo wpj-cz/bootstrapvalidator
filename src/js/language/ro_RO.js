@@ -4,6 +4,9 @@
      * Translated by @filipac
      */
     $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+        bankAccount : {
+             default: "Vă rugăm să introduceți un cod IBAN valid"
+        },
         base64: {
             'default': 'Te rog introdu un base64 valid'
         },

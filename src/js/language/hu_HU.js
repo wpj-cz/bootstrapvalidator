@@ -4,6 +4,9 @@
      * Translated by @blackfyre
      */
     $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+       bankAccount : {
+             default: "Kérjük, adjon meg érvényes IBAN számot"
+        },
         base64: {
             'default': 'Kérlek, hogy érvényes base 64 karakter láncot adj meg'
         },
