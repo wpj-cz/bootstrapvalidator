@@ -91,6 +91,7 @@ module.exports = function(grunt) {
                '<%= dirs.src %>/js/validator/zipCode.js',
                '<%= dirs.src %>/js/validator/charset.js',
                '<%= dirs.src %>/js/validator/iban.js',
+               '<%= dirs.src %>/js/validator/greaterThan.js',
                '<%= dirs.src %>/js/validator/bankAccount.js'
             ],
 
