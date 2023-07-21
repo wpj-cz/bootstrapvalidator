@@ -449,9 +449,9 @@
                sum += parseInt(value.charAt(i + 1), 10) * (8 - i);
             }
             sum = 11 - sum % 11;
-            if (sum === 10) {
+            /*if (sum === 10) {
                sum = 0;
-            }
+            }*/
             if (sum === 11) {
                sum = 1;
             }

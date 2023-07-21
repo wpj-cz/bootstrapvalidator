@@ -226,7 +226,7 @@
             'default': 'Wprowadź poprawny numer MEID'
         },
         notEmpty: {
-            'default': 'Wprowadź wartość, pole nie może być puste'
+            'default': 'Pole nie może być puste'
         },
         numeric: {
             'default': 'Wprowadź poprawną liczbę zmiennoprzecinkową'

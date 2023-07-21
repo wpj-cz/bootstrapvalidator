@@ -228,8 +228,13 @@
 
          var customMessage = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.phone.country, $.fn.bootstrapValidator.i18n.phone.countries[country]);// (6)
 
+         // pokud cislo zacina +420 nebo +421, tak by uz melo byt zvalidovany kodem nahore a timpadem nechceme spoustet
+         // mezinarodni validaci, ktera je nize - ta mezinarodni validace totiz nechala projit napr. cislo: +42077722793
+         // ktere ma jen 8 cisel misto 9
+         var noExtraValidationPrefixes = ['+420', '+421'];
+
          // Varovani
-         if (!isValid) {
+         if (!isValid && !noExtraValidationPrefixes.some(prefix => value.startsWith(prefix))) {
             value = value.replace(/\s/g, ''); // (1)
 
             if (country.toUpperCase() === "CZ" || country.toUpperCase() === "SK")  {
