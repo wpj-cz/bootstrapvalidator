@@ -680,7 +680,7 @@ if (typeof jQuery === 'undefined') {
                     }
 
                     // Focus the field
-                    $field.focus();
+                    $field.trigger("focus");
                     break;
                 }
             }

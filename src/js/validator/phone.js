@@ -65,6 +65,10 @@
             country = validator.getDynamicOption($field, country);
          }
 
+         // pokud cislo prošlo striktnější validací, nechceme spoustet mezinarodni validaci, ktera je nize
+         // ta mezinarodni validace totiz nechala projit napr. cislo: +42077722793 ktere ma jen 8 cisel misto 9
+         var noExtraValidationPrefixes = [];
+
          var isValid = true;
          switch (country.toUpperCase()) {
             case 'BR':
@@ -87,6 +91,7 @@
             case 'CZ':
                // Test: http://regexr.com/39hhl
                isValid = /^(((00)([- ]?)|\+)(420)([- ]?))?((\d{3})([- ]?)){2}(\d{3})$/.test(value);
+               noExtraValidationPrefixes.push('+420');
                break;
 
             case 'DE':
@@ -188,6 +193,8 @@
             case 'SK':
                // Test: http://regexr.com/3fsk4
                isValid = /^((((00)([- ]?)|\+)(421|420)([- ]?))|(0 ?))?((\d{3})([- ]?)){2}(\d{3})$/.test(value);
+               noExtraValidationPrefixes.push('+420');
+               noExtraValidationPrefixes.push('+421');
                break;
 
             case 'TH':
@@ -227,11 +234,6 @@
          // (6) Podle způsobu validace vracím buď původní zprávu nebo custom hlášku
 
          var customMessage = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.phone.country, $.fn.bootstrapValidator.i18n.phone.countries[country]);// (6)
-
-         // pokud cislo zacina +420 nebo +421, tak by uz melo byt zvalidovany kodem nahore a timpadem nechceme spoustet
-         // mezinarodni validaci, ktera je nize - ta mezinarodni validace totiz nechala projit napr. cislo: +42077722793
-         // ktere ma jen 8 cisel misto 9
-         var noExtraValidationPrefixes = ['+420', '+421'];
 
          // Varovani
          if (!isValid && !noExtraValidationPrefixes.some(prefix => value.startsWith(prefix))) {

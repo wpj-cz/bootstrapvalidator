@@ -13,7 +13,7 @@ module.exports = function(grunt) {
       },
 
       banner: [
-         '/*!',
+         '/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Tento soubor neupravujte !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
          ' * BootstrapValidator (<%= pkg.homepage %>)',
          ' * <%= pkg.description %>',
          ' *',
@@ -59,15 +59,6 @@ module.exports = function(grunt) {
             src: ['*.css'],
             dest: '<%= dirs.dist %>/css/',
             ext: '.min.css'
-         },
-         add_banner: {
-            options: {
-               stripBanners: true,
-               banner: '<%= banner %>'
-            },
-            files: {
-               '<%= dirs.dist %>/css/bootstrapValidator.min.css': ['<%= dirs.src %>/css/bootstrapValidator.css']
-            }
          }
       },
 
@@ -104,9 +95,6 @@ module.exports = function(grunt) {
       },
 
       uglify: {
-         options: {
-            banner: '<%= banner %>'
-         },
          build: {
             src: ['<%= dirs.dist %>/js/bootstrapValidator.js'],
             dest: '<%= dirs.dist %>/js/bootstrapValidator.min.js'
