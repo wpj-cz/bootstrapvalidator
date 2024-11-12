@@ -340,6 +340,9 @@
             ZA: 'Jižní Afriku'
          }
       },
+      vatSimple: {
+         'default': 'Musí začínať kódom krajiny (dve písmená) a obsahovať minimálne dva ďalšie znaky.'
+      },
       vin: {
          default: 'Prosím, zadejte správné VIN číslo'
       },

@@ -337,6 +337,9 @@
                 ZA: 'Republika Południowej Afryki'
             }
         },
+       vatSimple: {
+          'default': 'Musi zaczynać się od kodu kraju (dwie litery) i zawierać co najmniej dwa dodatkowe znaki.'
+       },
         vin: {
             'default': 'Wprowadź poprawny numer VIN'
         },

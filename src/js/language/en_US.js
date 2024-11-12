@@ -337,6 +337,9 @@
                 ZA: 'South Africa'
             }
         },
+       vatSimple: {
+          'default': 'Must begin with the country code (two letters) and contain a minimum of two additional characters.'
+       },
         vin: {
             'default': 'Please enter a valid VIN number'
         },

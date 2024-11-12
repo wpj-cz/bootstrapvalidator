@@ -339,6 +339,9 @@
                 ZA: 'Africa de Sud'
             }
         },
+       vatSimple: {
+          'default': 'Acesta trebuie să înceapă cu codul țării (două litere) și să conțină cel puțin două caractere suplimentare.'
+       },
         vin: {
             'default': 'Te rog sa introduci un numar VIN valid'
         },

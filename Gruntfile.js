@@ -14,6 +14,9 @@ module.exports = function(grunt) {
 
       banner: [
          '/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Tento soubor neupravujte !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+         '/*Změny jsou potřeba udělat ve zdrojových souborech v contrib/bootstrapvalidator a pak vygenerovat přes ./node_modules/grunt/bin/grunt',
+         '/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+         '/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Tento soubor neupravujte !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
          ' * BootstrapValidator (<%= pkg.homepage %>)',
          ' * <%= pkg.description %>',
          ' *',
@@ -79,6 +82,7 @@ module.exports = function(grunt) {
                '<%= dirs.src %>/js/validator/regexp.js',
                '<%= dirs.src %>/js/validator/stringLength.js',
                '<%= dirs.src %>/js/validator/vat.js',
+               '<%= dirs.src %>/js/validator/vatSimple.js',
                '<%= dirs.src %>/js/validator/zipCode.js',
                '<%= dirs.src %>/js/validator/charset.js',
                '<%= dirs.src %>/js/validator/iban.js',

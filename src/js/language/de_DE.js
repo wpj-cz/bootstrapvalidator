@@ -340,6 +340,9 @@
                 ZA: 'Südafrika'
             }
         },
+       vatSimple: {
+          'default': 'Er muss mit dem Ländercode (zwei Buchstaben) beginnen und mindestens zwei weitere Zeichen enthalten.'
+       },
         vin: {
             'default': 'Bitte gültige VIN Nummer eingeben'
         },
