@@ -95,7 +95,6 @@
          }
 
          var method  = ['_', country.toLowerCase()].join('');
-         method = '_simpleGlobal';
          return this[method](value)
             ? true
             : {
@@ -1422,23 +1421,6 @@
          }
 
          return /^4[0-9]{9}$/.test(value);
-      },
-
-      /**
-       * Validate simple VAT number
-       * Examples:
-       * - Starts with two letter chars (Country code)
-       * - Minimum 7 chars
-       *
-       * @params {String} value VAT number
-       * @returns {Boolean}
-       */
-      _simpleGlobal: function(value) {
-         if (/^[A-Z]{2}[0-9A-Za-z]{5,}$/.test(value)) {
-            return true;
-         }
-
-         return false;
       },
    };
 }(window.jQuery));
