@@ -364,7 +364,8 @@
                 SE: 'Szwecja',
                 SG: 'Singapur',
                 SK: 'Słowacja',
-                US: 'USA'
+                US: 'USA',
+                PL: 'Polska'
             }
         }
     });

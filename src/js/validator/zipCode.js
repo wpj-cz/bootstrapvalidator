@@ -36,7 +36,7 @@
             country: 'country'
         },
 
-        COUNTRY_CODES: [ 'AT', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'FR', 'GB', 'HR', 'IE', 'IT', 'LI', 'MA', 'NL', 'PT', 'RO', 'RU', 'SE', 'SI', 'SG', 'SK', 'US'],
+        COUNTRY_CODES: [ 'AT', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'FR', 'GB', 'HR', 'IE', 'IT', 'LI', 'MA', 'NL', 'PT', 'RO', 'RU', 'SE', 'SI', 'SG', 'SK', 'US', 'PL'],
 
         /**
          * Return true if and only if the input value is a valid country zip code
@@ -184,6 +184,9 @@
                     isValid = /^(\d{3})([ ]?)(\d{2})$/.test(value);
                     break;
 
+               case 'PL':
+                  isValid = /^[0-9]{2}-[0-9]{3}$/.test(value);
+                  break;
                 case 'US':
                 /* falls through */
                 default:

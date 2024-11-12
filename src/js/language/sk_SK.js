@@ -238,6 +238,7 @@
          default: 'Prosím, zadajte správne telefónne číslo',
          countryNotSupported: 'Telefoní číslo pro %s není podporované',
          country: 'Prosím, zadejte správné telefoní číslo',
+         phoneValidationWarning: 'Ste si istí správnosťou telefónneho čísla?',
          countries: {
             BR: 'Brazílii',
             CN: 'Čína',
