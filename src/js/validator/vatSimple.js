@@ -27,7 +27,7 @@
             return true;
          }
 
-         if (/^[A-Za-z]{2}[0-9A-Za-z]{6,}$/.test(value)) {
+         if (/^[A-Za-z]{2}[0-9A-Za-z]{2,}$/.test(value)) {
             return true;
          }
 
