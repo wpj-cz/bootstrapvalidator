@@ -1080,24 +1080,8 @@
        * @returns {Boolean}
        */
       _nl: function(value) {
-         if (/^NL[0-9]{9}B[0-9]{2}$/.test(value)) {
-            value = value.substr(2);
-         }
-         if (!/^[0-9]{9}B[0-9]{2}$/.test(value)) {
-            return false;
-         }
-
-         var sum    = 0,
-            weight = [9, 8, 7, 6, 5, 4, 3, 2];
-         for (var i = 0; i < 8; i++) {
-            sum += parseInt(value.charAt(i), 10) * weight[i];
-         }
-
-         sum = sum % 11;
-         if (sum > 9) {
-            sum = 0;
-         }
-         return (sum + '' === value.substr(8, 1));
+         // Checks for the format: NL + 9 digits + B + 2 digits.
+         return /^NL[0-9]{9}B[0-9]{2}$/.test(value);
       },
 
       /**
