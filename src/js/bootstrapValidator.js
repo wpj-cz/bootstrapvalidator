@@ -1044,6 +1044,24 @@ if (typeof jQuery === 'undefined') {
                     continue;
                 }
 
+                // Explicitní kontrola smartform statusu políčka. Nutné u tel. čísla,
+                // které se může tvářit pro BS v pořádku, ale nebude validní dle smartformu.
+                // V takovém případě je třeba zkontrolovat, aby při refreshi
+                // formuláře proběhla BS validace správně a vzala v potaz smartform validaci.
+                // data atribut smartform-invalid se přiřadí v šabloně block.smartForm.tpl
+                var currentStatus = status;
+
+                if ($field.data('smartform-invalid') === true) {
+                    var isEmpty = ($field.val() || '').trim() === '';
+                    var validatorNamesToCheck = ['phone'];
+
+                    if (isEmpty) {
+                        $field.data('smartform-invalid', false);
+                    } else if (validatorNamesToCheck.includes(validatorName) && currentStatus === this.STATUS_VALID) {
+                        currentStatus = this.STATUS_INVALID;
+                    }
+                }
+
                 var $parent      = $field.parents(group),
                     $message     = $field.data('bv.messages'),
                     $allErrors   = $message.find('.help-block[data-bv-validator][data-bv-for="' + field + '"]'),
@@ -1054,15 +1072,15 @@ if (typeof jQuery === 'undefined') {
 
                 // Update status
                 if (validatorName) {
-                    $field.data('bv.result.' + validatorName, status);
+                    $field.data('bv.result.' + validatorName, currentStatus);
                 } else {
                     for (var v in this.options.fields[field].validators) {
-                        $field.data('bv.result.' + v, status);
+                        $field.data('bv.result.' + v, currentStatus);
                     }
                 }
 
                 // Show/hide error elements and feedback icons
-                $errors.attr('data-bv-result', status);
+                $errors.attr('data-bv-result', currentStatus);
 
                 // Determine the tab containing the element
                 var $tabPane = $field.parents('.tab-pane'),
@@ -1071,7 +1089,7 @@ if (typeof jQuery === 'undefined') {
                     $tab = $('a[href="#' + tabId + '"][data-toggle="tab"]').parent();
                 }
 
-                switch (status) {
+                switch (currentStatus) {
                     case this.STATUS_VALIDATING:
                         isValidField = null;
                         this.disableSubmitButtons(true);
@@ -1157,7 +1175,7 @@ if (typeof jQuery === 'undefined') {
                                 : $icon.css('cursor', '').popover('destroy');
                         break;
                     default:
-                        (status === this.STATUS_INVALID) ? $errors.show() : $errors.hide();
+                        (currentStatus === this.STATUS_INVALID) ? $errors.show() : $errors.hide();
                         break;
                 }
 
@@ -1166,7 +1184,7 @@ if (typeof jQuery === 'undefined') {
                     bv: this,
                     field: field,
                     element: $field,
-                    status: status
+                    status: currentStatus
                 });
                 this._onFieldValidated($field, validatorName);
             }
