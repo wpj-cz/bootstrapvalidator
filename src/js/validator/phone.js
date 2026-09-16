@@ -78,8 +78,18 @@
                break;
 
             case 'CH':
-               // Test: http://regexr.com/3h627
-               isValid = /^((((00)|\+)(41)([- ]?))|(0))?( *\d *){9}$/.test(value);
+               value = $.trim(value);
+               var swissNumber = this._toSwissInternationalFormat(value);
+
+
+               if (swissNumber.indexOf('+41') !== 0) {
+                  // Test: http://regexr.com/3h627
+                  isValid = /^((((00)|\+)(41)([- ]?))|(0))?( *\d *){9}$/.test(value);
+                  break;
+               }
+
+               isValid = /^\+41[1-9]\d{8}$/.test(swissNumber);
+               noExtraValidationPrefixes.push('+41', '0041');
                break;
 
             case 'CN':
@@ -257,6 +267,21 @@
             valid: isValid,
             message: customMessage // (6)
          }
+      },
+
+      _toSwissInternationalFormat: function(value) {
+         var separatorless = value.replace(/[^\d+]/g, '');
+         var digits        = separatorless.replace(/\D/g, '');
+
+         if (separatorless.charAt(0) === '+') {
+            return '+' + digits;
+         }
+
+         if (digits.indexOf('00') === 0) {
+            return '+' + digits.slice(2);
+         }
+
+         return '+41' + digits.replace(/^0/, '');
       }
    };
 }(window.jQuery));
