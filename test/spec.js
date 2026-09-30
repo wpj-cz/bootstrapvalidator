@@ -6445,6 +6445,7 @@ describe('phone', function() {
                 '<div class="form-group">',
                     '<select class="form-control" name="country">',
                         '<option value="BR">Brazil</option>',
+                        '<option value="CH">Switzerland</option>',
                         '<option value="CN">China</option>',
                         '<option value="CZ">Czech Republic</option>',
                         '<option value="DE">Gemany</option>',
@@ -6778,6 +6779,34 @@ describe('phone', function() {
             '420123456789', '420 123456789', '420 123 456 789', '00421123456789', '00421 123456789',
             '00421 123 456 789', '00 421 123 456 789', '+421123456789', '+421 123456789',
             '+421 123 456 789'
+        ];
+        for (i in invalidSamples) {
+            this.bv.resetForm();
+            this.$phone.val(invalidSamples[i]);
+            this.bv.validate();
+            expect(this.bv.isValid()).toEqual(false);
+        }
+    });
+
+    it('Switzerland phone number', function() {
+        this.bv.updateOption('phone', 'phone', 'country', 'CH');
+
+        // Valid samples
+        var validSamples = [
+            '+41791234567', '+41 79 123 45 67', '+41-79-123-45-67', '0041791234567',
+            '00 41 79 123 45 67', '0791234567', '079 123 45 67', '791234567'
+        ];
+        for (var i in validSamples) {
+            this.bv.resetForm();
+            this.$phone.val(validSamples[i]);
+            this.bv.validate();
+            expect(this.bv.isValid()).toBeTruthy();
+        }
+
+        // Invalid samples
+        var invalidSamples = [
+            '+4179123456', '+417912345678', '079 123 45 6', '079123456789', '+41091234567',
+            '041791234567', '0041 79 123 456'
         ];
         for (i in invalidSamples) {
             this.bv.resetForm();

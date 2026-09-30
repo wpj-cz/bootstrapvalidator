@@ -67,7 +67,7 @@
 
          // pokud cislo prošlo striktnější validací, nechceme spoustet mezinarodni validaci, ktera je nize
          // ta mezinarodni validace totiz nechala projit napr. cislo: +42077722793 ktere ma jen 8 cisel misto 9
-         var noExtraValidationPrefixes = [];
+         var isStrictlyValidated = false;
 
          var isValid = true;
          switch (country.toUpperCase()) {
@@ -78,8 +78,18 @@
                break;
 
             case 'CH':
-               // Test: http://regexr.com/3h627
-               isValid = /^((((00)|\+)(41)([- ]?))|(0))?( *\d *){9}$/.test(value);
+               value = $.trim(value);
+               var swissNumber = this._toSwissInternationalFormat(value);
+
+
+               if (swissNumber.indexOf('+41') !== 0) {
+                  // Test: http://regexr.com/3h627
+                  isValid = /^((((00)|\+)(41)([- ]?))|(0))?( *\d *){9}$/.test(value);
+                  break;
+               }
+
+               isValid = /^\+41[1-9]\d{8}$/.test(swissNumber);
+               isStrictlyValidated = true;
                break;
 
             case 'CN':
@@ -91,7 +101,6 @@
             case 'CZ':
                // Test: http://regexr.com/39hhl
                isValid = /^(((00)([- ]?)|\+)(420)([- ]?))?((\d{3})([- ]?)){2}(\d{3})$/.test(value);
-               noExtraValidationPrefixes.push('+420');
                break;
 
             case 'DE':
@@ -193,8 +202,6 @@
             case 'SK':
                // Test: http://regexr.com/3fsk4
                isValid = /^((((00)([- ]?)|\+)(421|420)([- ]?))|(0 ?))?((\d{3})([- ]?)){2}(\d{3})$/.test(value);
-               noExtraValidationPrefixes.push('+420');
-               noExtraValidationPrefixes.push('+421');
                break;
 
             case 'TH':
@@ -225,38 +232,59 @@
          }
 
 
-         // Pokud číslo neni validni podle vybrane zeme:
-         // (1) Vyhodi mezery z hodnoty inputu
-         // (2) Pokud to je CZ nebo SK, zkontroluje validitu předčíslí + délku vstupu 6-9 čísel (aby to odpovídalo validaci v engine)
-         // (3) Pokud to není CZ ani SK, zkontroluje validitu předčíslí + délku vstupu 1-14 čísel
-         // (4) Pokud (2) nebo (3) projde, zobrazi se varovani
-         // (5) Pomocí classy .validation-warning určuji jestli zobrazit validační hlášku u validního fieldu
-         // (6) Podle způsobu validace vracím buď původní zprávu nebo custom hlášku
+         // Pokud číslo neni validni podle vybrane zeme a nerozhodla o nem striktni validace:
+         // (1) Vyhodi mezery z hodnoty inputu a prevede predvolbu 00 na +
+         // (2) U českého a slovenského čísla v mezinárodním tvaru rozhoduje kontrola na přesně 9 číslic
+         // (3) Pokud to je CZ nebo SK, zkontroluje validitu předčíslí + délku vstupu 6-9 čísel (aby to odpovídalo validaci v engine)
+         // (4) Pokud to není CZ ani SK, zkontroluje validitu předčíslí + délku vstupu 1-14 čísel
+         // (5) Pokud (3) nebo (4) projde, zobrazi se varovani
+         // (6) Pomocí classy .validation-warning určuji jestli zobrazit validační hlášku u validního fieldu
+         // (7) Podle způsobu validace vracím buď původní zprávu nebo custom hlášku
 
-         var customMessage = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.phone.country, $.fn.bootstrapValidator.i18n.phone.countries[country]);// (6)
+         var customMessage = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.phone.country, $.fn.bootstrapValidator.i18n.phone.countries[country]);// (7)
 
          // Varovani
-         if (!isValid && !noExtraValidationPrefixes.some(prefix => value.startsWith(prefix))) {
+         $field.removeClass('validation-warning'); // (6)
+         if (!isValid && !isStrictlyValidated) {
             value = $field.val().replace(/\s/g, ''); // (1)
 
-            if (country.toUpperCase() === "CZ" || country.toUpperCase() === "SK")  {
-               isValid = (/(\+|00)(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{6,10}$/).test(value); // (2)
-            } else {
-               isValid = (/(\+|00)(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$/).test(value); // (3)
-            }
+            var normalizedValue = value.replace(/^00/, '+'); // (1)
 
-            if (isValid) {
-               customMessage =  $.fn.bootstrapValidator.i18n.phone.phoneValidationWarning; // (4)
-               $field.addClass('validation-warning'); // (5)
+            if (/^\+42[01]/.test(normalizedValue)) {
+               isValid = /^\+42[01]\d{9}$/.test(normalizedValue); // (2)
+            } else {
+               if (country.toUpperCase() === "CZ" || country.toUpperCase() === "SK")  {
+                  isValid = (/^(\+|00)(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{6,10}$/).test(value); // (3)
+               } else {
+                  isValid = (/^(\+|00)(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$/).test(value); // (4)
+               }
+
+               if (isValid) {
+                  customMessage =  $.fn.bootstrapValidator.i18n.phone.phoneValidationWarning; // (5)
+                  $field.addClass('validation-warning'); // (6)
+               }
             }
-         } else {
-            $field.removeClass('validation-warning'); // (5)
          }
 
          return {
             valid: isValid,
-            message: customMessage // (6)
+            message: customMessage // (7)
          }
+      },
+
+      _toSwissInternationalFormat: function(value) {
+         var separatorless = value.replace(/[^\d+]/g, '');
+         var digits        = separatorless.replace(/\D/g, '');
+
+         if (separatorless.charAt(0) === '+') {
+            return '+' + digits;
+         }
+
+         if (digits.indexOf('00') === 0) {
+            return '+' + digits.slice(2);
+         }
+
+         return '+41' + digits.replace(/^0/, '');
       }
    };
 }(window.jQuery));
